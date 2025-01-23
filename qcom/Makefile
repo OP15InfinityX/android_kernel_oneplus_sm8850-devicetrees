@@ -9,6 +9,8 @@
 # Silence all DTC warnings by default
 DTC_FLAGS += -q
 
+ifneq (,)
+
 add-overlays = $(foreach o,$1,$(foreach b,$2,$(eval $(basename $b)-$(basename $o)-dtbs = $b $o) $(basename $b)-$(basename $o).dtb))
 
 # canoe-dtb-y is list of DTBs to install when doing non-overlay build
@@ -1221,6 +1223,8 @@ autogvm-overlays-dtb-$(CONFIG_ARCH_QTI_VM) += \
 dtb-y += $(autogvm-dtb-y)
 
 endif
+endif
+
 endif
 
 always-y        := $(dtb-y)
